@@ -1,0 +1,13 @@
+githubのトークン(なんでも使える）
+・ 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
+
+git remote set-url origin https://momoeigeta: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@github.com/momoeigeta/project02.git
+
+最初にリポジトリ作るとき
+echo "# project03" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://momoeigeta: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@github.com/momoeigeta/project02.git
+git push -u origin main
