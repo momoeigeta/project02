@@ -1,38 +1,153 @@
-.App {
-  text-align: center;
+html {
+    font-size: 62.5%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+    --text-color: #393939;
+    --minus-color: #FF6963;
+    --plus-color: #2ecc71;
+    --white-color: #f7f7f7;
+    --gray-color: #eee8e8cc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+:root {
+    --big-font-size: 4.0rem;
+    --h1-font-size: 2.0rem;
+    --h2-font-size: 1.3rem;
+    --total-font-size: 2.5rem;
+    --h3-font-size: 1.6rem;
+    --normal-font-size: 1.8rem;
+    --topPercentage-font-size: 1.0rem;
   }
+
+:root {
+    --normal-font-weight: 300;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (min-width: 768px) {
+    :root {
+      --big-font-size: 4.5rem;
+      --h1-font-size: 2.5rem;
+      --h2-font-size: 1.5rem;
+      --total-font-size: 2.7rem;
+      --h3-font-size: 2rem;
+      --normal-font-size: 1.8rem;
+      --topPercentage-font-size: 1.2rem;
+    }
   }
-  to {
-    transform: rotate(360deg);
-  }
+  
+
+body {
+    background: var(--white-color);
+    font-weight: 400;
+    color: #393939;
+    font-size: 1.6em;
+    font-family: 'Open Sans', "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic", "メイリオ", "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+    min-height: 100vh;
 }
+
+
+/* LAYOUT */
+.container {
+    margin: 0 auto;
+    font-size: var(--normal-font-size);
+}
+@media screen and (min-width: 768px) {
+    .container {
+        width: 100%;
+        overflow: hidden;
+        background: var(--white-color);
+    }
+}
+
+
+/* TOP */
+.top {
+    background: url(back-img.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+
+/* HEADER */
+.head {
+    padding: 10px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.head h1 {
+    font-size: var(--h1-font-size);
+    color: var(--gray-color);
+    color: white;
+    text-align: center;
+    margin: 0 3rem;
+}
+
+.showMonth {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0 2rem 0;
+}
+
+.showMonth > button {  /*  >は直下  */
+    background: #ffbf7f;
+    color: white;
+    cursor: pointer;
+    font-size: var(--h2-font-size);
+    text-align: center;
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 768px) {
+    .head {
+        width: 750px;
+    }
+    .head h1 {
+        margin: 0 5rem;
+    }
+}
+
+.showToday {
+    display:block;
+    margin: 0 auto;
+    background: #ffbf7f;
+    color: white;
+    cursor: pointer;
+    font-size: var(--h2-font-size);
+    text-align: center;
+    outline: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+
+/* BALANCE */
+.balance-container {
+    display: flex;
+    justify-content: center;
+}
+
+.balance-container h2 {
+    padding-right: 5px;
+    /* color: var(--white-color); */
+    color: white;
+    font-size: var(--h2-font-size);
+}
+
+.balance {
+    font-size: var(--big-font-size);
+    color: white;
+}
+
+.balance span {
+    font-size: var(--h3-font-size);
+}
+
+
