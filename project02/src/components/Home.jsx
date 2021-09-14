@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { db } from "../firebase/Firebase";
 import { Header } from './Header';
 import { Balance } from './Balance';
+import { IncomeExpense } from './IncomeExpense';
+import { AddItem } from './AddItem';
 import { totalCalc } from './TotalIncome';
 // import Header from './Header';
 
@@ -15,7 +18,7 @@ const Home = () => {
 
     // const { currentUser } = useContext(AuthContext);
 
-// Header
+    // Header
     const setPrevMonth = () => {
         const year = date.getFullYear();
         const month = date.getMonth() - 1;
@@ -33,8 +36,8 @@ const Home = () => {
     const setCurrentMonth = () => {
         window.location.reload()
     };
-    
-// Balance
+
+    // Balance
     const incomeTotal = totalCalc(incomeItems);
 
     return (
@@ -51,7 +54,23 @@ const Home = () => {
                         incomeTotal={incomeTotal}
                         expenseItems={expenseItems}
                     />
+                    <IncomeExpense
+                        incomeTotal={incomeTotal}
+                        expenseItems={expenseItems}
+                    />
                 </div>
+                <AddItem
+                    // addIncome={addIncome}
+                    // addExpense={addExpense}
+                    inputText={inputText}
+                    setInputText={setInputText}
+                    inputAmount={inputAmount}
+                    setInputAmount={setInputAmount}
+                    type={type}
+                    setType={setType}
+                    // selectedMonth={selectedMonth}
+                    // thisMonth={thisMonth}
+                />
 
             </div>
         </>

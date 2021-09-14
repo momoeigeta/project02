@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { auth } from "../firebase/Firebase";
 import { styled } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 
