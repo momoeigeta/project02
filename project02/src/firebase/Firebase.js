@@ -3,9 +3,10 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 import { getFirestore } from "firebase/firestore/lite";
-import { getAuth } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 import "firebase/auth";
+import "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,10 +23,16 @@ const firebaseConfig = {
   measurementId: "G-WNVL7W8YS4"
 };
 
+// const firebaseApp = initializeApp({
+//   apiKey: "AIzaSyADhLG4YpdIjqY8E_2QSAYZgh-NKRU3uQ4",
+//   authDomain: "test-51113.firebaseapp.com",
+//   projectId: "test-51113",
+// });
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-const db = getFirestore(app);
-const auth = getAuth(app);
+const db = getFirestore();
+const auth = getAuth();
 export { auth, db };

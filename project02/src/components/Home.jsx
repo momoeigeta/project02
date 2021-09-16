@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { db } from "../firebase/Firebase";
 import { Header } from './Header';
 import { Balance } from './Balance';
 import { IncomeExpense } from './IncomeExpense';
 import { AddItem } from './AddItem';
+import { AuthContext } from '../auth/AuthProvider';
 import { totalCalc } from './TotalIncome';
-// import Header from './Header';
+// import { firebase } from "firebase/app";
+import "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
+
 
 const Home = () => {
 
@@ -37,6 +41,18 @@ const Home = () => {
         window.location.reload()
     };
 
+    const addIncome = (text, amount) => {
+        const docId = Math.random().toString(32).substring(2);
+        // const date = db.Timestamp.now();
+
+        collection('incomeItems').doc(docId).set({
+            // uid: currentUser.uid,
+            text,
+            amount,
+            date,
+        })
+    }
+
     // Balance
     const incomeTotal = totalCalc(incomeItems);
 
@@ -60,7 +76,7 @@ const Home = () => {
                     />
                 </div>
                 <AddItem
-                    // addIncome={addIncome}
+                    addIncome={addIncome}
                     // addExpense={addExpense}
                     inputText={inputText}
                     setInputText={setInputText}
@@ -68,8 +84,8 @@ const Home = () => {
                     setInputAmount={setInputAmount}
                     type={type}
                     setType={setType}
-                    // selectedMonth={selectedMonth}
-                    // thisMonth={thisMonth}
+                // selectedMonth={selectedMonth}
+                // thisMonth={thisMonth}
                 />
 
             </div>

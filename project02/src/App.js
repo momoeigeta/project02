@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Router, Route, Switch } from 'react-router-dom';
 // import PrivateRoute from './auth/PrivateRoute';
-// import { AuthProvider } from './auth/AuthProvider';
+import { AuthProvider } from './auth/AuthProvider';
 import Home from './components/Home';
 // import Login from './auth/Login';
 // import SignUp from './auth/SignUp';
