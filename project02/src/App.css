@@ -47,6 +47,81 @@ body {
 }
 
 
+/* AUTH PAGE */
+.wrapper {
+    width: 100%;
+}
+
+.auth-container {
+    height: 100vh;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin: 0 auto;
+}
+
+.auth-container > h1 {
+    font-size: 2.8rem;
+    text-align: center;
+    padding: 1em 0;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-form-item {
+    padding: 10px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.auth-form-item input {
+    display: flex;
+    height: 40px;
+    width: 250px;
+    font-size: 1.5rem;
+    outline: none;
+    border-radius: 3px;
+    border: 1px solid #c0c0c0;
+    color: var(--text-color);
+    padding: 5px;
+}
+
+.auth-bottom {
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    color: #8c8c8c;
+    margin-top: 30px;
+}
+
+.auth-bottom:hover {
+    border-bottom: 1px solid #8c8c8c;
+}
+
+@media screen and (min-width: 768px) {
+    .wrapper {
+        background: var(--gray-color);
+        min-height: 100vh;
+        position: relative;
+    }
+
+    .auth-container {
+        height: 500px;
+        width: 400px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+    }
+}
+
 /* LAYOUT */
 .container {
     margin: 0 auto;
@@ -227,3 +302,178 @@ body {
     }
 }
 
+
+/* ADD FORM */
+.add-form {
+    background: var(--gray-color);
+    width: 100%;
+    padding: 10px 0;
+}
+
+.add-form select {
+    margin-top: 10px;
+    background: white;
+    border-radius: 3px;
+    font-size: var(--normal-font-size);
+    padding: 5px;
+}
+
+.add-text,
+.add-amount {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    justify-content: center;
+}
+
+.add-text {
+    margin-right: 25px;
+}
+
+.add-form label {
+    display: inline-block;
+    padding-right: 5px;
+}
+
+.add-form input[type="text"] ,input[type="number"] {
+    height: 40px;
+    width: 300px;
+    border: 1px solid #a9a9a9;
+    background: #fafafa;
+    border-radius: 3px;
+    color: #393939;
+    padding: 5px;
+    font-size: 1.6rem;
+}
+
+.add-form input[type="number"] {
+    text-align: right;
+}
+
+.add-form select:focus, input[type="text"]:focus ,input[type="number"]:focus {
+    border: 1px solid #87ceeb;
+    outline: none;
+}
+
+.add-btn {
+    width: 100%;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .add-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .add-form select {
+        margin-top: 0;
+        margin-right: 15px;
+    }
+
+    .add-amount > input {
+        width: 150px;
+    }
+
+    .add-btn {
+        width: 100px;
+        margin-left: 30px;
+    }
+
+    .add-form button {
+        width: 100px;
+        height: 40px;
+        margin: 0;
+    }
+}
+
+
+/* LIST */
+.list-container {
+    padding: 50px 10px;
+}
+
+.list {
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+.list li {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.money-plus {
+    color: var(--plus-color);
+}
+
+.money-minus {
+    color: var(--minus-color);
+    align-items: center;
+    display: flex;
+}
+
+.money-minus span {
+    display: inline-block;
+    background: #fac9e2;
+    color: var(--minus-color);
+    font-size: 1.3rem;
+    padding: 0 3px;
+    text-align: center;
+    margin-left: 5px;
+    border-radius: 5px;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 25%;
+    right: 2%;
+    opacity: 0;
+    border-radius: 50%;
+    line-height: 20px;
+    width: 25px;
+    height: 25px;
+    color: #f08080;
+    border: 1px solid #f08080;
+    background: white;
+    text-align: center;
+    padding-top: 2px;
+    cursor: pointer;
+    outline: none;
+    font-size: 2rem;
+}
+
+.thisMonthList:hover .delete-btn {
+    opacity: 1;
+    transition: .3s;
+}
+
+.thisMonthList:hover .money-plus, .thisMonthList:hover .money-minus {
+    margin-right: 30px;
+    transition: .3s;
+}
+
+@media screen and (min-width: 768px) {
+    .list-container {
+        display: flex;
+        justify-content: center;
+        padding: 50px 0;
+    }
+
+    .income-list {
+        margin-right: 50px;
+    }
+
+    .list-container h3 {
+        margin-bottom: 10px;
+    }
+
+    .list {
+        width: 350px;
+    }
+}

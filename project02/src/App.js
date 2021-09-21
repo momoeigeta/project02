@@ -1,16 +1,20 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter
+  // , Router
+  , Route, Switch
+} from 'react-router-dom';
 import PrivateRoute from './auth/PrivateRoute';
 import { AuthProvider } from './auth/AuthProvider';
 import Home from './components/Home';
 import Login from './auth/Login';
 import SignUp from './auth/SignUp';
-import { createBrowserHistory } from "history";
+// import { createBrowserHistory } from "history";
 
 const App = () => {
 
-  const hist = createBrowserHistory();
+  // const hist = createBrowserHistory();
 
   return (
     <>

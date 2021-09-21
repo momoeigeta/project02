@@ -2,8 +2,11 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
-import { getFirestore } from "firebase/firestore/lite";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import {
+  getAuth
+  // , createUserWithEmailAndPassword
+} from "firebase/auth";
 
 import "firebase/auth";
 import "firebase/firestore";
@@ -35,4 +38,12 @@ const analytics = getAnalytics(app);
 
 const db = getFirestore();
 const auth = getAuth();
+
+// var firebase = require('firebase');
+// var firebaseui = require('firebaseui');
+
+// Initialize the FirebaseUI Widget using Firebase.
+// var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+
 export { auth, db };
