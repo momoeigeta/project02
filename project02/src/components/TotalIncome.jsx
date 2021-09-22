@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 
 export const totalCalc = (incomeItems) => {
     const incomeAmounts = incomeItems.map(incomeItem => incomeItem.amount);

@@ -1,11 +1,11 @@
 import React, { useEffect, useState, createContext } from "react";
-// import { auth } from "../firebase/Firebase";
+import { auth } from "../firebase/Firebase";
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import {  createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
-const auth = getAuth();
+// const auth = getAuth();
 
-const AuthContext = createContext()
+const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
     const signup = async (email, password, history) => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            onAuthStateChanged(user => setCurrentUser(user));
+            onAuthStateChanged(auth, user => setCurrentUser(user));
             history.push("/");
         } catch (error) {
             alert(error);
@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
     const login = async (email, password, history) => {
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            onAuthStateChanged(user => setCurrentUser(user));
+            onAuthStateChanged(auth, user => setCurrentUser(user));
             history.push("/");
         } catch (error) {
             alert(error);

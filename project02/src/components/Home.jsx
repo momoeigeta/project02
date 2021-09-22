@@ -4,11 +4,20 @@ import { Header } from './Header';
 import { Balance } from './Balance';
 import { IncomeExpense } from './IncomeExpense';
 import { AddItem } from './AddItem';
+import { ItemsList } from './ItemsList';
 import { AuthContext } from '../auth/AuthProvider';
 import { totalCalc } from './TotalIncome';
 // import { firebase } from "firebase/app";
 import "firebase/firestore";
-import { collection, addDoc } from "firebase/firestore";
+import {
+    collection
+    , addDoc, getDocs
+    , doc, setDoc
+    , where, query, orderBy, startAt, endAt
+    , onSnapshot
+    , Timestamp
+    , deleteDoc
+} from "firebase/firestore";
 
 
 const Home = () => {
@@ -20,7 +29,20 @@ const Home = () => {
     const [type, setType] = useState("inc");
     const [date, setDate] = useState(new Date());
 
-    // const { currentUser } = useContext(AuthContext);
+    const { currentUser } = useContext(AuthContext);
+
+    useEffect(() => {
+        getIncomeData();
+        getExpenseData();
+    }
+        , []
+    );
+
+    useEffect(() => {
+        getIncomeData();
+        getExpenseData();
+    }, [date]);
+
 
     // Header
     const setPrevMonth = () => {
@@ -37,22 +59,98 @@ const Home = () => {
         setDate(new Date(year, month, day));
     };
 
-    const setCurrentMonth = () => {
-        window.location.reload()
+    // const setCurrentMonth = () => {
+    //     window.location.reload()
+    // };
+
+    // get first date of the month
+    const startOfMonth = (date) => {
+        return new Date(date.getFullYear(), date.getMonth(), 1);
+    };
+
+    // get last date of this month
+    const endOfMonth = (date) => {
+        return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    };
+
+    // operate add form and income/expense list
+    const selectedMonth = date.getMonth() + 1;
+    const today = new Date();
+    const thisMonth = today.getMonth() + 1;
+
+    // firebase IncomeData
+    const getIncomeData = () => {
+        const incomeData = query(collection(db, 'incomeItems')
+            , where('uid', '==', currentUser.uid)
+            , orderBy('date')
+            , startAt(startOfMonth(date))
+            , endAt(endOfMonth(date)));
+
+        const unsubscribe = onSnapshot(incomeData, (querySnapshot) => {
+            const incomeItems = [];
+            querySnapshot.forEach(doc => incomeItems.push({ ...doc.data(), docId: doc.id }))
+            setIncomeItems(incomeItems);
+        });
     };
 
     const addIncome = (text, amount) => {
         const docId = Math.random().toString(32).substring(2);
-        // const date = db.Timestamp.now();
+        const date =
+            Timestamp.now();
+        // new Date();
 
-        collection('incomeItems').doc(docId).set({
-            // uid: currentUser.uid,
+        setDoc(doc(db, "incomeItems", docId), {
+            uid: currentUser.uid,
             text,
             amount,
             date,
-        })
-    }
+        });
+        setIncomeItems([
+            ...incomeItems, { text: inputText, amount: inputAmount, docId: docId, date: date }
+        ]);
+    };
 
+    const deleteIncome = (docId) => {
+        deleteDoc(doc(db, "incomeItems", docId));
+    };
+
+
+    // firebase Expense data 
+    const getExpenseData = () => {
+        const expenseData = query(collection(db, 'expenseItems')
+            , where('uid', '==', currentUser.uid)
+            , orderBy('date')
+            , startAt(startOfMonth(date))
+            , endAt(endOfMonth(date)));
+
+        const unsubscribe = onSnapshot(expenseData, (querySnapshot) => {
+            const expenseItems = [];
+            querySnapshot.forEach(doc => expenseItems.push({ ...doc.data(), docId: doc.id }))
+            setExpenseItems(expenseItems);
+        });
+    };
+
+    const addExpense = (text, amount) => {
+        const docId = Math.random().toString(32).substring(2);
+        const date = Timestamp.now();
+
+        setDoc(doc(db, "expenseItems", docId), {
+            uid: currentUser.uid,
+            text,
+            amount,
+            date,
+        });
+        setExpenseItems([
+            ...expenseItems, { text: inputText, amount: inputAmount, docId: docId, date: date }
+        ]);
+    };
+
+    const deleteExpense = (docId) => {
+        deleteDoc(doc(db, "expenseItems", docId));
+    };
+
+
+    // calculate % and show total 
     // Balance
     const incomeTotal = totalCalc(incomeItems);
 
@@ -64,7 +162,7 @@ const Home = () => {
                         date={date}
                         setPrevMonth={setPrevMonth}
                         setNextMonth={setNextMonth}
-                        setCurrentMonth={setCurrentMonth}
+                    // setCurrentMonth={setCurrentMonth}
                     />
                     <Balance
                         incomeTotal={incomeTotal}
@@ -77,22 +175,32 @@ const Home = () => {
                 </div>
                 <AddItem
                     addIncome={addIncome}
-                    // addExpense={addExpense}
+                    addExpense={addExpense}
                     inputText={inputText}
                     setInputText={setInputText}
                     inputAmount={inputAmount}
                     setInputAmount={setInputAmount}
                     type={type}
                     setType={setType}
-                // selectedMonth={selectedMonth}
-                // thisMonth={thisMonth}
+                    selectedMonth={selectedMonth}
+                    thisMonth={thisMonth}
+                    date={date}
                 />
-
+                <ItemsList
+                    deleteIncome={deleteIncome}
+                    deleteExpense={deleteExpense}
+                    incomeTotal={incomeTotal}
+                    incomeItems={incomeItems}
+                    expenseItems={expenseItems}
+                    selectedMonth={selectedMonth}
+                    thisMonth={thisMonth}
+                    date={date}
+                    // date={incomeItems.date}
+                />
             </div>
         </>
     );
 
-}
-
+};
 
 export default Home;

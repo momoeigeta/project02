@@ -1,5 +1,8 @@
-import React, { useContext } from 'react';
+import React
+// , { useContext }
+    from 'react';
 import { auth } from "../firebase/Firebase";
+// import { AuthContext } from '../auth/AuthProvider';
 import { styled } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 
@@ -20,20 +23,23 @@ const SignOutButton = styled(Button)({
 
 export const Header = ({ date, setPrevMonth, setNextMonth, setCurrentMonth }) => {
 
+    // const { currentUser } = useContext(AuthContext);
+
     const today = date;
     const year = today.getFullYear();
     const month = today.getMonth() + 1;
+    // const day = today.getDate();
 
     return (
         <div className="head">
-            <SignOutButton onClick>Sign Out</SignOutButton>
+            <SignOutButton onClick={() => auth.signOut()}>サインアウト</SignOutButton>
+            {/* <button className="showToday" onClick={() => setCurrentMonth()}>今月</button> */}
 
             <div className="showMonth">
                 <button onClick={() => setPrevMonth()}>←前月</button>
                 <h1>{year}年{month}月</h1>
                 <button onClick={() => setNextMonth()}>次月→</button>
             </div>
-            <button className="showToday" onClick={() => setCurrentMonth()}>今月</button>
         </div>
     )
 };
