@@ -14,14 +14,16 @@ export const ExpenseItem = ({ deleteExpense, expenseItem, expenseText, expenseAm
         };
     };
 
-    const today = date;
-    const day = today.getDate();
+    // const today = date;
+    // const day = today.getDate();
 
 
     const showThisMonth = () => {
         return (
             <li className="thisMonthList">
-                <div>{day}日</div>
+                <div>{date.getMonth() + 1}月
+                    <span>{date.getDate()}日</span>
+                </div>
                 <div className="text">{expenseText}</div>
                 <div className="money-minus">-{Number(expenseAmount).toLocaleString()}円
                     <span>{percentage()}</span>
@@ -34,6 +36,10 @@ export const ExpenseItem = ({ deleteExpense, expenseItem, expenseText, expenseAm
     const showPastMonth = () => {
         return (
             <li>
+                <div>{date.getMonth() + 1}月
+                    <span>{date.getDate()}日</span>
+                </div>
+
                 <div className="text">{expenseText}</div>
                 <div className="money-minus">-{Number(expenseAmount).toLocaleString()}円
                     <span>{percentage()}</span>

@@ -84,7 +84,8 @@ const Home = () => {
             , where('uid', '==', currentUser.uid)
             , orderBy('date')
             , startAt(startOfMonth(date))
-            , endAt(endOfMonth(date)));
+            , endAt(endOfMonth(date))
+        );
 
         const unsubscribe = onSnapshot(incomeData, (querySnapshot) => {
             const incomeItems = [];
@@ -154,6 +155,9 @@ const Home = () => {
     // Balance
     const incomeTotal = totalCalc(incomeItems);
 
+    // const incomeTotal = totalCalc(incomeItems);
+
+
     return (
         <>
             <div className="container">
@@ -167,6 +171,7 @@ const Home = () => {
                     <Balance
                         incomeTotal={incomeTotal}
                         expenseItems={expenseItems}
+                        // setPrevMonth={setPrevMonth}
                     />
                     <IncomeExpense
                         incomeTotal={incomeTotal}

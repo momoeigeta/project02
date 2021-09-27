@@ -1,17 +1,24 @@
 import React from 'react';
 
-export const Balance = ({ incomeTotal, expenseItems }) => {
+export const Balance = ({ incomeTotal, expenseItems   ,PrevMonth}) => {
     
     const expenseAmounts = expenseItems.map(expenseItem => expenseItem.amount);
 
     const expenseTotal = expenseAmounts.reduce((acc, cur) => acc += cur, 0);
 
-    const balance = incomeTotal - expenseTotal;
+    const balance = incomeTotal
+        // + PrevMonth.incomeItems
+        - expenseTotal;
+
+    // const balance = selectedMonth.incomeTotal+incomeTotal - expenseTotal;
+
 
     return (
         <div className="balance-container">
             <h2>残高</h2>
-            <div className="balance">{Number(balance).toLocaleString()}<span>円</span></div>
+            <div className="balance">
+                {Number(balance).toLocaleString()}
+                <span>円</span></div>
         </div>
     )
 }

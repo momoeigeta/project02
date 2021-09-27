@@ -3,7 +3,7 @@ import { IncomeItem } from './IncomeItem';
 import { ExpenseItem } from './ExpenseItem';
 // import { database } from 'firebase';
 
-export const ItemsList = ({ deleteIncome, deleteExpense, incomeItems, expenseItems, incomeTotal, selectedMonth, thisMonth, date }) => {
+export const ItemsList = ({ deleteIncome, deleteExpense, incomeItems, expenseItems, incomeTotal, selectedMonth, thisMonth }) => {
 
     return (
         <div className="list-container">
@@ -19,7 +19,7 @@ export const ItemsList = ({ deleteIncome, deleteExpense, incomeItems, expenseIte
                             key={incomeItem.docId}
                             selectedMonth={selectedMonth}
                             thisMonth={thisMonth}
-                            date={date}
+                            date={incomeItem.date.toDate()}
                         />
                     ))}
                 </ul>
@@ -37,7 +37,7 @@ export const ItemsList = ({ deleteIncome, deleteExpense, incomeItems, expenseIte
                             incomeTotal={incomeTotal}
                             selectedMonth={selectedMonth}
                             thisMonth={thisMonth}
-                            date={date}
+                            date={expenseItem.date.toDate()}
                         />
                     ))}
                 </ul>
