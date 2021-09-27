@@ -30,11 +30,6 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
-// const firebaseApp = initializeApp({
-//   apiKey: "AIzaSyADhLG4YpdIjqY8E_2QSAYZgh-NKRU3uQ4",
-//   authDomain: "test-51113.firebaseapp.com",
-//   projectId: "test-51113",
-// });
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
