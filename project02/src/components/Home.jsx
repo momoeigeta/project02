@@ -11,7 +11,7 @@ import { totalCalc } from './TotalIncome';
 import "firebase/firestore";
 import {
     collection
-    , addDoc, getDocs
+    // , addDoc, getDocs
     , doc, setDoc
     , where, query, orderBy, startAt, endAt
     , onSnapshot
@@ -34,13 +34,15 @@ const Home = () => {
     useEffect(() => {
         getIncomeData();
         getExpenseData();
-    }
-        , []
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []
     );
+
 
     useEffect(() => {
         getIncomeData();
         getExpenseData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [date]);
 
 
@@ -87,6 +89,7 @@ const Home = () => {
             , endAt(endOfMonth(date))
         );
 
+        // eslint-disable-next-line
         const unsubscribe = onSnapshot(incomeData, (querySnapshot) => {
             const incomeItems = [];
             querySnapshot.forEach(doc => incomeItems.push({ ...doc.data(), docId: doc.id }))
@@ -124,6 +127,7 @@ const Home = () => {
             , startAt(startOfMonth(date))
             , endAt(endOfMonth(date)));
 
+        // eslint-disable-next-line
         const unsubscribe = onSnapshot(expenseData, (querySnapshot) => {
             const expenseItems = [];
             querySnapshot.forEach(doc => expenseItems.push({ ...doc.data(), docId: doc.id }))
@@ -171,7 +175,7 @@ const Home = () => {
                     <Balance
                         incomeTotal={incomeTotal}
                         expenseItems={expenseItems}
-                        // setPrevMonth={setPrevMonth}
+                    // setPrevMonth={setPrevMonth}
                     />
                     <IncomeExpense
                         incomeTotal={incomeTotal}
@@ -200,7 +204,7 @@ const Home = () => {
                     selectedMonth={selectedMonth}
                     thisMonth={thisMonth}
                     date={date}
-                    // date={incomeItems.date}
+                // date={incomeItems.date}
                 />
             </div>
         </>

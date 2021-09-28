@@ -7,7 +7,8 @@ import { styled } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 
 const SignOutButton = styled(Button)({
-    background: '#C1C1C1',
+    // background: '#C1C1C1',
+    background: "#9e9eff",
     fontSize: '1.0rem',
     border: 0,
     borderRadius: 3,
@@ -17,7 +18,9 @@ const SignOutButton = styled(Button)({
     margin: '0 0 0 auto',
     display: 'block',
     '&:hover': {
-        backgroundColor: '#B4B4B4',
+        // backgroundColor: '#B4B4B4',
+        backgroundColor: '#9393ff',
+
     },
 });
 
@@ -36,9 +39,9 @@ export const Header = ({ date, setPrevMonth, setNextMonth, setCurrentMonth }) =>
             {/* <button className="showToday" onClick={() => setCurrentMonth()}>今月</button> */}
 
             <div className="showMonth">
-                <button onClick={() => setPrevMonth()}>←前月</button>
+                <button onClick={() => setPrevMonth()}>⇦前月</button>
                 <h1>{year}年{month}月</h1>
-                <button onClick={() => setNextMonth()}>次月→</button>
+                <button onClick={() => setNextMonth()}>次月⇨</button>
             </div>
         </div>
     )
