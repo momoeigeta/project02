@@ -269,7 +269,7 @@ body {
     margin: 0;
     /* background-color: var(--minus-color); */
     /* background-color:#ff6262; */
-    background-color:#e05353;
+    background-color:#f36262;
 
     display: flex;
     justify-content: flex-end;
@@ -455,7 +455,7 @@ body {
     border: 1px solid #f08080;
     background: white;
     text-align: center;
-    padding-top: 2px;
+    /* padding-top: 2px; */
     cursor: pointer;
     outline: none;
     font-size: 2rem;

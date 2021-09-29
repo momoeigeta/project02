@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 const AddButton = styled(Button)({
   background: '#87CEEB',
   border: 0,
-  borderRadius: 20,
+  borderRadius: 15,
   color: 'white',
   height: 48,
   width: '250px',
