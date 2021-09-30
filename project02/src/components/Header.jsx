@@ -24,7 +24,7 @@ const SignOutButton = styled(Button)({
     },
 });
 
-export const Header = ({ date, setPrevMonth, setNextMonth, setCurrentMonth }) => {
+export const Header = ({ date, setPrevMonth, setNextMonth, setDate }) => {
 
     // const { currentUser } = useContext(AuthContext);
 
@@ -36,7 +36,7 @@ export const Header = ({ date, setPrevMonth, setNextMonth, setCurrentMonth }) =>
     return (
         <div className="head">
             <SignOutButton onClick={() => auth.signOut()}>サインアウト</SignOutButton>
-            {/* <button className="showToday" onClick={() => setCurrentMonth()}>今月</button> */}
+            <button className="showToday" onClick={() => setDate(new Date())}>今月</button>
 
             <div className="showMonth">
                 <button onClick={() => setPrevMonth()}>⇦前月</button>

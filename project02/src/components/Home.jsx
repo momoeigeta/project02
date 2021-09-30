@@ -61,9 +61,6 @@ const Home = () => {
         setDate(new Date(year, month, day));
     };
 
-    // const setCurrentMonth = () => {
-    //     window.location.reload()
-    // };
 
     // get first date of the month
     const startOfMonth = (date) => {
@@ -72,13 +69,15 @@ const Home = () => {
 
     // get last date of this month
     const endOfMonth = (date) => {
-        return new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        return new Date(date.getFullYear(), date.getMonth() + 1, 1);
     };
 
     // operate add form and income/expense list
-    const selectedMonth = date.getMonth() + 1;
+
+    const selectedMonth = date.getFullYear() + "/" + (date.getMonth() + 1);
     const today = new Date();
-    const thisMonth = today.getMonth() + 1;
+    const thisMonth = today.getFullYear() + "/" + (today.getMonth() + 1);
+
 
     // firebase IncomeData
     const getIncomeData = () => {
@@ -168,9 +167,9 @@ const Home = () => {
                 <div className="top">
                     <Header
                         date={date}
+                        setDate={setDate}
                         setPrevMonth={setPrevMonth}
                         setNextMonth={setNextMonth}
-                    // setCurrentMonth={setCurrentMonth}
                     />
                     <Balance
                         incomeTotal={incomeTotal}
