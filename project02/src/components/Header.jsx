@@ -21,7 +21,7 @@ registerLocale('ja', ja)
 
 const SignOutButton = styled(Button)({
     // background: '#C1C1C1',
-    background: "#9e9eff",
+    background: "rgba(158 ,158 ,255 ,0.95)",
     // fontSize: '1.0rem',
     fontSize: '1.2rem',
     // fontWeight: "bold",
@@ -96,19 +96,19 @@ export const Header = ({ date, setPrevMonth, setNextMonth, setDate }) => {
                 // startDate
                 />
 
-            {
-                isOpen && (
-                    <div>
-                        <DatePicker
-                            selected={startDate}
-                            onChange={(date) => handleChange(date)}
-                            inline
-                            showMonthYearPicker
-                            locale="ja"
-                        />
-                    </div>
-                )
-            }
+                {
+                    isOpen && (
+                        <div>
+                            <DatePicker
+                                selected={startDate}
+                                onChange={(date) => handleChange(date)}
+                                inline
+                                showMonthYearPicker
+                                locale="ja"
+                            />
+                        </div>
+                    )
+                }
             </div>
 
 

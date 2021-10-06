@@ -1,4 +1,3 @@
-@import "variables.scss";
 @import "mixins.scss";
 
 .react-datepicker-wrapper {
@@ -10,12 +9,12 @@
 
 
 .react-datepicker {
-  font-family: $datepicker__font-family;
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
   // font-size: $datepicker__font-size;
   font-size: 13px;
   background-color: #fff;
-  color: $datepicker__text-color;
-  border: 3px solid pink;
+  // color: $datepicker__text-color;
+  border: 3px solid rgba(255 ,192, 224);
   border-radius: 5px;
   display: inline-block;
   position: relative;
@@ -23,6 +22,7 @@
   position: absolute;
   right: 0;
   top: 60px;
+  opacity: 0.97;
 }
 
 .react-datepicker__header {
@@ -37,7 +37,8 @@
   // color: $datepicker__header-color;
   color: white;
   font-weight: bold;
-  font-size: $datepicker__font-size * 2;
+  // font-size: $datepicker__font-size * 2;
+  font-size: 0.8rem * 2;
   user-select: none;
 }
 
@@ -53,8 +54,8 @@
   padding: 0;
   border: none;
   z-index: 1;
-  height: $datepicker__navigation-button-size;
-  width: $datepicker__navigation-button-size;
+  height: 32px;
+  width: 32px;
   text-indent: -999em;
   overflow: hidden;
 
@@ -105,7 +106,7 @@
 }
 
 .react-datepicker__month {
-  margin: $datepicker__margin;
+  margin: 0.4rem;
   text-align: center;
 
   .react-datepicker__month-text,
@@ -120,20 +121,19 @@
   cursor: pointer;
 
   &:hover {
-    border-radius: $datepicker__border-radius;
+    border-radius: 0.3rem;
     // background-color: $datepicker__background-color;
   }
 
   &--keyboard-selected {
-    border-radius: $datepicker__border-radius;
+    border-radius: 0.3rem;
     // background-color: lighten($datepicker__selected-color, 10%);
     // background-color: lighten(#4da4e7, 10%);
     background-color: lighten(#ff86db, 10%);
     color: #fff;
 
     &:hover {
-      background-color: darken($datepicker__selected-color, 5%);
-      // background-color: #ff8cdd;
+      background-color: #ff8cdd;
     }
   }
 
@@ -143,7 +143,7 @@
 // .react-datepicker__quarter-text 
 
   &.react-datepicker__month--selected,
-  &.react-datepicker__month--in-range,
+  // &.react-datepicker__month--in-range,
   &.react-datepicker__quarter--selected,
   &.react-datepicker__quarter--in-range {
     &:hover {

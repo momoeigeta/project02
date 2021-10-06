@@ -160,7 +160,7 @@ body {
     text-align: center;
     margin: 0 3rem;
     /* background-color: rgb(145, 233, 255); */
-    background-color: rgba(139, 225, 251, 0.89);
+    background-color: rgba(139, 225, 251, 0.5);
     padding: 0px;
 }
 
@@ -171,7 +171,8 @@ body {
 }
 
 .showMonth > button {  /*  >は直下  */
-    background: #ffbf7f;
+    /* background: #ffbf7f; */
+    background: rgba(255 ,192, 224, 0.95);
     color: white;
     cursor: pointer;
     font-size: var(--h2-font-size);
@@ -180,6 +181,8 @@ body {
     border: none;
     padding: 0.5rem;
     border-radius: 5px;
+    /* font-weight: bold; */
+    /* height: 40px; */
 }
 
 @media screen and (min-width: 768px) {
@@ -196,12 +199,15 @@ body {
     padding-top: 10px;
     justify-content: center;
     position: relative;
+    height: 50px;
 }
 
 .showToday {
     /* display:block; */
-    margin: 0 ;
+    margin: 3px 0 ;
     background: #ffbf7f;
+    background: rgba(255 ,192, 224, 0.95);
+
     color: white;
     cursor: pointer;
     font-size: var(--h2-font-size);
@@ -210,7 +216,7 @@ body {
     border: none;
     padding: 0.5rem;
     border-radius: 5px;
-    height: 40px;
+    /* height: 40px; */
     width: 40px;
 }
 
@@ -222,6 +228,7 @@ body {
     cursor: pointer;
     position: absolute;
     right: 0;
+    opacity: 0.95;
 }
 
 
@@ -237,11 +244,15 @@ body {
     color: white;
     /* font-size: var(--h2-font-size); */
     font-size: var(--h3-font-size);
+    background-color: rgba(139, 225, 251, 0.5);
+
 }
 
 .balance {
     font-size: var(--big-font-size);
     color: white;
+    background-color: rgba(139, 225, 251, 0.2);
+
 }
 
 .balance span {
@@ -277,8 +288,8 @@ body {
     align-items: center;
     margin: 20px 0px;
     /* background-color: var(--plus-color); */
-    background-color:#00c267;
-
+    /* background-color:#00c267; */
+    background-color:rgba(21, 207, 114, 0.7);
 
     color: white;
     font-size: var(--total-font-size);
@@ -291,7 +302,8 @@ body {
     margin: 0;
     /* background-color: var(--minus-color); */
     /* background-color:#ff6262; */
-    background-color:#f36262;
+    /* background-color:#f370708e; */
+    background-color:rgba(255, 119, 119, 0.7);
 
     display: flex;
     justify-content: flex-end;
@@ -307,7 +319,7 @@ body {
 
 .totalPercentage {
     justify-content: center;
-    background: #f89bc9;
+    background: rgb(248,155,201,0.8);
     color: white;
     font-size: var(--topPercentage-font-size);
     line-height: 1.8;
@@ -339,6 +351,7 @@ body {
 .add-form {
     /* background: var(--gray-color); */
     background: #ffd0fd;
+    background: rgba(255 ,192, 224, 0.6);
 
     width: 100%;
     padding: 10px;
@@ -350,6 +363,7 @@ body {
     border-radius: 3px;
     font-size: var(--normal-font-size);
     padding: 5px;
+    border: 1px solid #50ee9a;
 }
 
 .add-text,
@@ -367,6 +381,8 @@ body {
 .add-form label {
     display: inline-block;
     padding-right: 5px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
 }
 
 .add-form input[type="text"] ,input[type="number"] {
