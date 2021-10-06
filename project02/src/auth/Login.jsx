@@ -44,7 +44,7 @@ const Login = ({ history }) => {
                     </div>
                     <SignInButton type="submit">SIGN IN</SignInButton>
                 </form>
-                <Link to="/signup" className="auth-bottom">SignUpはこちら</Link>
+                <Link to="/signup" className="auth-bottom">Sign Upはこちら</Link>
             </div>
         </div>
     );

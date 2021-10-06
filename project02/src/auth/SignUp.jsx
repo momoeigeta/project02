@@ -14,7 +14,7 @@ const SignUpButton = styled(Button)({
     color: "white",
     padding: "10px 40px",
     marginTop: "30px",
-    "&hover": {
+    "&:hover": {
     backgroundColor: "#ee3e52",
     },
 });
@@ -45,7 +45,7 @@ const SignUp = ({ history }) => {
                     </div>
                     <SignUpButton className="signUp-btn" type="submit">SIGN UP</SignUpButton>
                 </form>
-                <Link to="/login" className="auth-bottom">SignInへ戻る</Link>
+                <Link to="/login" className="auth-bottom">Sign Inへ戻る</Link>
             </div>
         </div>
     );
