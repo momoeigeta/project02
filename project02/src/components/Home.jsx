@@ -25,7 +25,9 @@ const Home = () => {
     const [inputText, setInputText] = useState("");
     const [inputAmount, setInputAmount] = useState(0);
     const [incomeItems, setIncomeItems] = useState([]);
+    const [allIncomeItems, setAllIncomeItems] = useState([]);
     const [expenseItems, setExpenseItems] = useState([]);
+    const [allExpenseItems, setAllExpenseItems] = useState([]);
     const [type, setType] = useState("inc");
     const [date, setDate] = useState(new Date());
 
@@ -34,6 +36,8 @@ const Home = () => {
     useEffect(() => {
         getIncomeData();
         getExpenseData();
+        getAllIncomeData();
+        getAllExpenseData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []
     );
@@ -42,6 +46,8 @@ const Home = () => {
     useEffect(() => {
         getIncomeData();
         getExpenseData();
+        getAllIncomeData();
+        getAllExpenseData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [date]);
 
@@ -73,7 +79,6 @@ const Home = () => {
     };
 
     // operate add form and income/expense list
-
     const selectedMonth = date.getFullYear() + "/" + (date.getMonth() + 1);
     const today = new Date();
     const thisMonth = today.getFullYear() + "/" + (today.getMonth() + 1);
@@ -87,7 +92,6 @@ const Home = () => {
             , startAt(startOfMonth(date))
             , endAt(endOfMonth(date))
         );
-
         // eslint-disable-next-line
         const unsubscribe = onSnapshot(incomeData, (querySnapshot) => {
             const incomeItems = [];
@@ -95,6 +99,21 @@ const Home = () => {
             setIncomeItems(incomeItems);
         });
     };
+
+    const getAllIncomeData = () => {
+        const AllIncomeData = query(collection(db, 'incomeItems')
+            , where('uid', '==', currentUser.uid)
+            , orderBy('date')
+        );
+        // eslint-disable-next-line
+        const unsubscribe = onSnapshot(AllIncomeData, (querySnapshot) => {
+            const allIncomeItems = [];
+            querySnapshot.forEach(doc => allIncomeItems.push({ ...doc.data(), docId: doc.id }))
+            setAllIncomeItems(allIncomeItems);
+        });
+    };
+
+
 
     const addIncome = (text, amount) => {
         const docId = Math.random().toString(32).substring(2);
@@ -124,7 +143,8 @@ const Home = () => {
             , where('uid', '==', currentUser.uid)
             , orderBy('date')
             , startAt(startOfMonth(date))
-            , endAt(endOfMonth(date)));
+            , endAt(endOfMonth(date))
+        );
 
         // eslint-disable-next-line
         const unsubscribe = onSnapshot(expenseData, (querySnapshot) => {
@@ -133,6 +153,23 @@ const Home = () => {
             setExpenseItems(expenseItems);
         });
     };
+
+    const getAllExpenseData = () => {
+        const allExpenseData = query(collection(db, 'expenseItems')
+            , where('uid', '==', currentUser.uid)
+            , orderBy('date')
+            // , startAt(startOfMonth(date))
+            // , endAt(endOfMonth(date))
+        );
+
+        // eslint-disable-next-line
+        const unsubscribe = onSnapshot(allExpenseData, (querySnapshot) => {
+            const allExpenseItems = [];
+            querySnapshot.forEach(doc => allExpenseItems.push({ ...doc.data(), docId: doc.id }))
+            setAllExpenseItems(allExpenseItems);
+        });
+    };
+
 
     const addExpense = (text, amount) => {
         const docId = Math.random().toString(32).substring(2);
@@ -160,6 +197,7 @@ const Home = () => {
 
     // const incomeTotal = totalCalc(incomeItems);
 
+    const allIncomeTotal = totalCalc(allIncomeItems);
 
     return (
         <>
@@ -174,7 +212,8 @@ const Home = () => {
                     <Balance
                         incomeTotal={incomeTotal}
                         expenseItems={expenseItems}
-                    // setPrevMonth={setPrevMonth}
+                        allIncomeTotal={allIncomeTotal}
+                        allExpenseItems={allExpenseItems}
                     />
                     <IncomeExpense
                         incomeTotal={incomeTotal}
@@ -208,7 +247,6 @@ const Home = () => {
             </div>
         </>
     );
-
 };
 
 export default Home;

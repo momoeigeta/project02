@@ -1,21 +1,18 @@
 import React
-// , { useContext }
 , { useState }
     from 'react';
+import { Link } from 'react-router-dom';
 import { auth } from "../firebase/Firebase";
 // import { AuthContext } from '../auth/AuthProvider';
 import { styled } from '@material-ui/styles';
 import Button from '@material-ui/core/Button';
 
 import DatePicker from "react-datepicker";
-import {
-    registerLocale
-    // , setDefaultLocale
-} from "react-datepicker";
+import { registerLocale } from "react-datepicker";
 import ja from 'date-fns/locale/ja';
-import "./datepicker.scss";
+import "../styles/datepicker.scss";
 import Calender from "./calPink.png";
-
+import ListPink from "./ListPink.png";
 registerLocale('ja', ja)
 
 
@@ -85,6 +82,9 @@ export const Header = ({ date, setPrevMonth, setNextMonth, setDate }) => {
             <SignOutButton onClick={() => auth.signOut()}>サインアウト</SignOutButton>
 
             <div className="headerItem">
+                <Link to="/List">
+                    <img src={ListPink} alt="" className="ListIcon" />
+                </Link>
                 <button className="showToday" onClick={() => {
                     setDate(new Date());
                     setStartDate(new Date());

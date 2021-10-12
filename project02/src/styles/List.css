@@ -1,0 +1,19 @@
+.List {
+    background-color: #fbfbe3;
+}
+
+.List-container {
+    width: 750px;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.List h1 {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 28px;
+}
+
+.List button {
+    margin-top: 20px;
+}
