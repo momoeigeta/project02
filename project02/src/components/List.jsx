@@ -7,6 +7,7 @@ import {
     collection
     , where, query, orderBy
     , onSnapshot
+    , limit
 } from "firebase/firestore";
 import { AuthContext } from '../auth/AuthProvider';
 
@@ -36,7 +37,9 @@ export const List = () => {
     const getIncomeData = () => {
         const incomeData = query(collection(db, 'incomeItems')
             , where('uid', '==', currentUser.uid)
+            // , where('lastUpdated', '>', 'lastFetchTimestamp')
             , orderBy('date')
+            , limit(25)
         );
         // eslint-disable-next-line
         const unsubscribe = onSnapshot(incomeData, (querySnapshot) => {
@@ -50,6 +53,7 @@ export const List = () => {
         const expenseData = query(collection(db, 'expenseItems')
             , where('uid', '==', currentUser.uid)
             , orderBy('date')
+            , limit(25)
         );
 
         // eslint-disable-next-line
