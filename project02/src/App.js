@@ -10,7 +10,7 @@ import { AuthProvider } from './auth/AuthProvider';
 import Home from './components/Home';
 import Login from './auth/Login';
 import SignUp from './auth/SignUp';
-import { List } from "./components/List";
+// import { List } from "./components/List";
 // import { createBrowserHistory } from "history";
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
             <PrivateRoute exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/list" component={List} />
+            {/* <Route exact path="/list" component={List} /> */}
 
           </Switch>
           {/* </Router> */}
